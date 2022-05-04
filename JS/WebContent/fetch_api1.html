@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>데이터 가져오기</h1>
+	<input type="button" value="공공도서관" onclick="fetchPage('http://openapi.seoul.go.kr:8088/71795a7a4c646b6637334849727970/xml/SeoulPublicLibraryInfo/1/5/')"/>
+	<article></article>
+	
+<script type="text/javascript">
+	function fetchPage(fn){
+		fetch(fn).then((res)=>{
+			if(res.ok){
+				//alert('ok!');
+				console.log(res);
+				return res.json();
+			}throw new Error('${res.status} 요청을 처리하지 못했어요 ');
+		})
+		.then((text)=>{
+			console.log(text[0]);
+			document.getElementsByTagName('article')[0].innerHTML= text[0];
+		})
+		.catch((e)=> {alert(e);});
+	}
+</script>
+</body>
+</html>

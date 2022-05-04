@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="button" value="1" />
+<input type="button" value="2" />
+<input type="button" value="3" />
+<input type="button" value="4" />
+<button value="a"> a</button>
+<button value="b"> b</button>
+<button value="c"> c</button>
+<button value="d"> d</button>
+
+<script type="text/javascript">
+
+const buttons = document.querySelectorAll('button');
+  
+for (let i = 0; i < buttons.length; i++) {
+	//let v = buttons[i].value;
+	  buttons[i].onclick = function(e){
+			console.log(e.target.value+' 클릭클릭 ');
+	  };
+	}
+
+</script>
+</body>
+</html>

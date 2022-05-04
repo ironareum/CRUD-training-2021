@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+		<!-- fetchPage('css.html')" -->
+<body>
+	<h1><a href="">WEB</a></h1>
+	
+	<ol>
+		<li><a onclick="
+		fetch('css.html').then(function(response){
+			console.log(response);
+			response.text().then(function(text){
+				alert(text);
+				document.getElementsByTagName('article')[0].innerHTML= text;
+			})
+		})">
+		HTML</a></li>
+		<li><a>CSS</a></li>
+		<li><a>JavaScript</a></li>
+	</ol>
+	
+	<h2>WEB</h2>
+	<p>loremloremloremloremloremloremloremlorem</p>
+	<article>
+	</article>
+<script type="text/javascript">
+	function fetchPage(fileName){
+		fetch(fileName)
+		//fetch의 기본 응답결과는 response 객체
+		.then((response)=> {
+			//response.ok는 status가 200~299사이인 경우 true
+			if(response.ok){
+				alert('ok!');
+				console.log(response);
+				return response.text(); //응답을 text 형태로 반환
+			}throw new Error( '${response.status} 요청을 처리하지 못했어요!'); })
+		.then((text)=> {
+			alert(text);
+			document.getElementsByTagName('article')[0].innerHTML= text;})
+		.catch((e)=>{alert(e); });
+	}
+</script>
+</body>
+</html>
